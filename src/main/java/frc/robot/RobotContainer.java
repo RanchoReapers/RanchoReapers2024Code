@@ -25,9 +25,7 @@ import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.Constants.USB;
 import frc.robot.commands.SwerveJoystickCmd;
-import frc.robot.commands.armJoystickCmd;
 import frc.robot.commands.climberJoystickCmd;
-import frc.robot.subsystems.ArmSubSystem;
 import frc.robot.subsystems.SwerveSubsystem;
 import frc.robot.subsystems.climberSubSystem;
 
@@ -52,7 +50,7 @@ public class RobotContainer {
      () -> -driverController.getRawAxis(OIConstants.kDriverYAxis), 
      () -> -driverController.getRawAxis(OIConstants.kDriverXAxis), 
      () -> -driverController.getRawAxis(OIConstants.kDriverRotAxis), 
-     () -> !driverController.getLeftBumper()));
+     () -> !driverController.getLeftBumperButton()));
 
      //armSubsystem.setDefaultCommand(new armJoystickCmd(armSubsystem));
      climberSubSystem.setDefaultCommand(new climberJoystickCmd(climberSubSystem));

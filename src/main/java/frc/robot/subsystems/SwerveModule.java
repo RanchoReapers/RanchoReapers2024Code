@@ -1,25 +1,41 @@
+/* READ: I think that this was the file being edited Mon 1/20
+in class, prioritize merging the other version over this one!!! */
+
+
 package frc.robot.subsystems;
 
+//pheoenix 6 imports
 import com.ctre.phoenix6.configs.CANcoderConfiguration;
 import com.ctre.phoenix6.hardware.CANcoder;
-import com.ctre.phoenix6.signals.SensorDirectionValue;
-import com.fasterxml.jackson.databind.ser.std.CalendarSerializer;
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.RelativeEncoder;
-//import com.revrobotics.CANSparkMax.IdleMode;
-//import com.revrobotics.SparkMaxRelativeEncoder.Type;
 
+//ctre imports
+import com.ctre.phoenix6.signals.SensorDirectionValue;
+
+//fasterxml imports
+//import com.fasterxml.jackson.databind.ser.std.CalendarSerializer;
+//unused ^
+
+//rev imports
+import com.revrobotics.spark.SparkMax;
+import com.revrobotics.RelativeEncoder;
+//import com.revrobotics.spark.SparkMax.IdleMode;
+//import com.revrobotics.SparkMaxRelativeEncoder.Type;
+//unused ^ & ^^
+
+//wpilib imports
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+
+//frc imports
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.ModuleConstants;
 
 public class SwerveModule {
     
-    private final CANSparkMax driveMotor;
-    private final CANSparkMax turnMotor;
+    private final SparkMax driveMotor;
+    private final SparkMax turnMotor;
 
     private final RelativeEncoder driveEncoder;
     private final RelativeEncoder turnEncoder;
@@ -28,6 +44,7 @@ public class SwerveModule {
 
     private final CANcoder absoluteEncoder;
     private final boolean absoluteEncoderReversed;
+    // ignore the error here ^, it is read.
     private final double absoluteEncoderOffsetRad;
 
     public SwerveModule(int driveMotorId, int turnMotorId, boolean driveMotorReversed, boolean turnMotorReversed,
@@ -43,8 +60,8 @@ public class SwerveModule {
 
         absoluteEncoder.getConfigurator().apply(config);
 
-        driveMotor = new CANSparkMax(driveMotorId, CANSparkMax.MotorType.kBrushless);
-        turnMotor = new CANSparkMax(turnMotorId, CANSparkMax.MotorType.kBrushless);
+        driveMotor = new SparkMax(driveMotorId, SparkMax.MotorType.kBrushless);
+        turnMotor = new SparkMax(turnMotorId, SparkMax.MotorType.kBrushless);
 
         driveMotor.restoreFactoryDefaults();
         turnMotor.restoreFactoryDefaults();
@@ -115,8 +132,8 @@ public class SwerveModule {
     }
 
     public void stop() {
-        driveMotor.setIdleMode(CANSparkMax.IdleMode.kBrake);
-        turnMotor.setIdleMode(CANSparkMax.IdleMode.kBrake);
+        driveMotor.setIdleMode(SparkMax.IdleMode.kBrake);
+        turnMotor.setIdleMode(SparkMax.IdleMode.kBrake);
         driveMotor.set(0);
         turnMotor.set(0);
     }
