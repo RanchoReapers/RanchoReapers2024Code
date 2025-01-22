@@ -4,7 +4,7 @@ in class, prioritize merging the other version over this one!!! */
 
 package frc.robot.subsystems;
 
-//pheoenix 6 imports
+//phoenix 6 imports
 import com.ctre.phoenix6.configs.CANcoderConfiguration;
 import com.ctre.phoenix6.hardware.CANcoder;
 
