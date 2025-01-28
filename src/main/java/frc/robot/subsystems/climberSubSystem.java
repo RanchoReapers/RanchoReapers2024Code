@@ -1,19 +1,28 @@
 package frc.robot.subsystems;
 
-import com.revrobotics.CANSparkMax;
+import com.revrobotics.spark.SparkBase.PersistMode;
+import com.revrobotics.spark.SparkBase.ResetMode;
+import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.config.SparkMaxConfig;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
+
+
 public class climberSubSystem extends SubsystemBase {
 
-    CANSparkMax climbLeft;
-    CANSparkMax climbRight;
+    SparkMax climbLeft;
+    SparkMax climbRight;
+    SparkMaxConfig climbLeftConfig = new SparkMaxConfig();
 
     public climberSubSystem(int canID_right,int canID_left) {
-        climbRight = new CANSparkMax(canID_right, CANSparkMax.MotorType.kBrushless);
-        climbLeft = new CANSparkMax(canID_left, CANSparkMax.MotorType.kBrushless);
+        climbRight = new SparkMax(canID_right, SparkMax.MotorType.kBrushless);
+        climbLeft = new SparkMax(canID_left, SparkMax.MotorType.kBrushless);
 
-        climbLeft.setInverted(true);
+        climbLeftConfig
+        .inverted(true);
+        
+        climbLeft.configure(climbLeftConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     }
 
     public void climbControl(boolean xPress, boolean yPress) {

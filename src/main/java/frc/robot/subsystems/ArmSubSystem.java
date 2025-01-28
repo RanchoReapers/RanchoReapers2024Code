@@ -1,18 +1,18 @@
 package frc.robot.subsystems;
-import com.revrobotics.CANSparkMax;
+import com.revrobotics.spark.SparkMax;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ArmSubSystem extends SubsystemBase{
     
-    CANSparkMax armDrive;
-    CANSparkMax handSuction;
-    CANSparkMax ringHolding;
+    SparkMax armDrive;
+    SparkMax handSuction;
+    SparkMax ringHolding;
 
     public ArmSubSystem(int armCANid, int handCANid, int ringHoldingCANid) {
-        armDrive = new CANSparkMax(armCANid, CANSparkMax.MotorType.kBrushed);
-         handSuction = new CANSparkMax(handCANid, CANSparkMax.MotorType.kBrushed);
-         ringHolding = new CANSparkMax(ringHoldingCANid, CANSparkMax.MotorType.kBrushed);
+        armDrive = new SparkMax(armCANid, SparkMax.MotorType.kBrushed);
+         handSuction = new SparkMax(handCANid, SparkMax.MotorType.kBrushed);
+         ringHolding = new SparkMax(ringHoldingCANid, SparkMax.MotorType.kBrushed);
     }
     public void armControl(double rightTrigger, double leftTrigger) {
         if (leftTrigger > 0.02 && rightTrigger < 0.02) {

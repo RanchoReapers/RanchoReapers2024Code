@@ -22,9 +22,11 @@ public class climberJoystickCmd extends Command {
   public void execute() {
     boolean xPress = RobotContainer.driverController.getXButton();
     boolean yPress = RobotContainer.driverController.getYButton();
-    boolean rightBumper = RobotContainer.driverController.getAButton();
-    boolean leftBumper = RobotContainer.driverController.getBButton();
+    // boolean rightBumper = RobotContainer.driverController.getAButton();
+    // boolean leftBumper = RobotContainer.driverController.getBButton();
     climberSubSystem.climbControl(xPress, yPress);
+    // climberSubSystem.climbControl(rightBumper, leftBumper);
+    // ^^ You can uncomment the above 3 to switch to climb control using A & B buttons instead of x & y
   }
   // Called once the command ends or is interrupted.
   @Override
